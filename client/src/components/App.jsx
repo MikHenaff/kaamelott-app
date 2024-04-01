@@ -9,14 +9,8 @@ import SpinnerLoader from "./SpinnerLoader";
 function App() {
   const [infos, setInfos] = useState({});
   const [quotation, setQuotation] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (quotation !== "") setIsLoading(false);
-  }, [quotation]);
 
   const fetchRandQuot = async () => {
-    setIsLoading(true);
     try {
       axios.get("/api/random").then((response) => {
         const data = response.data;
@@ -55,7 +49,6 @@ function App() {
       >
         Voir une citation au hasard
       </button>
-      {quotation ? setIsLoading(false) : null}
       {quotation && (
         <>
           <Card
@@ -68,11 +61,6 @@ function App() {
           />
           <RandCharQuotButton name={name} onClick={() => fetchRandCharQuot()} />
         </>
-      )}{" "}
-      {isLoading && (
-        <div className="flex justify-center">
-          <SpinnerLoader />
-        </div>
       )}
       <Footer />
     </div>
