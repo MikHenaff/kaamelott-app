@@ -12,12 +12,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(false);
-  }, []);
+    if (quotation !== "") setIsLoading(false);
+  }, [quotation]);
 
   const fetchRandQuot = async () => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       axios.get("/api/random").then((response) => {
         const data = response.data;
         setInfos(data.infos);
@@ -55,7 +55,8 @@ function App() {
       >
         Voir une citation au hasard
       </button>
-      {quotation && setIsLoading(false) && (
+      {quotation ? setIsLoading(false) : null}
+      {quotation && (
         <>
           <Card
             picture={picture}
