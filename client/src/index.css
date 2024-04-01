@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text&family=MedievalSharp&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    position: relative;
+    font-family: "Crimson Text", serif;
+    background-color: #000;
+    color: #faebd7;
+  }
+
+  h1,
+  h2,
+  .footer span {
+    font-family: "MedievalSharp", cursive;
+  }
+
+  h2 span {
+    font-family: "Crimson Text", serif;
+  }
+}
