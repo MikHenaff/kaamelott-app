@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api",
-      "destination": "https://kaamelott-app-server.vercel.app"
+      "source": "/api/:path(.*)",
+      "destination": "https://kaamelott-app-server.vercel.app/api/:path"
     },
     {
       "source": "/(.*)",
