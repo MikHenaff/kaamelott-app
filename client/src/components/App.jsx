@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Home from "./Home";
 import Card from "./Card";
 import RandCharQuotButton from "./RandCharQuotButton";
 import Footer from "./Footer";
-import SpinnerLoader from "./SpinnerLoader";
 
 function App() {
   const [infos, setInfos] = useState({});
