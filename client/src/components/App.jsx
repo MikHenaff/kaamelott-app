@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Home from "./Home";
 import Card from "./Card";
 import RandCharQuotButton from "./RandCharQuotButton";
 import Footer from "./Footer";
-import axios from "axios";
+import SpinnerLoader from "./SpinnerLoader";
 
 function App() {
   const [infos, setInfos] = useState({});
   const [quotation, setQuotation] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   const fetchRandQuot = async () => {
     try {
+      setIsLoading(true);
       axios.get("/api/random").then((response) => {
         const data = response.data;
         setInfos(data.infos);
@@ -48,7 +55,7 @@ function App() {
       >
         Voir une citation au hasard
       </button>
-      {quotation && (
+      {quotation && setIsLoading(false) && (
         <>
           <Card
             picture={picture}
@@ -60,6 +67,11 @@ function App() {
           />
           <RandCharQuotButton name={name} onClick={() => fetchRandCharQuot()} />
         </>
+      )}{" "}
+      {isLoading && (
+        <div className="flex justify-center">
+          <SpinnerLoader />
+        </div>
       )}
       <Footer />
     </div>
