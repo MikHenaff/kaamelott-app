@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "kaamelott-app-server.vercel.app/api",
+      "/api": "kaamelott-app-client.vercel.app/api",
     },
   },
   plugins: [react()],
